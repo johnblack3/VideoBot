@@ -1,17 +1,90 @@
 ,downs,score,selftext,subreddit,title,ups,upvote_ratio
-0,0.0,1.0,*Boop*,confessions,"I boop my GF on the nose everyday and say, “boop, tee hee”",1.0,1.0
-1,0.0,1.0,Every time I talk to a man the conversation always turns sexual. I can never just form a pure bond with a man without them wanting something sexual from it. I don’t get it.,confessions,Men treat me like an object,1.0,0.99
-2,0.0,0.0,"I don’t know how to feel about it. He’s 10 years older than me (his bday is coming up soon) and i like him but it just feels wrong
+0,0.0,2.0,"I have a dataframe df. 
 
-He takes me on dates and spoils me and he’s really nice to me but he wants sex all the time and in my mind it makes me wonder why he doesn’t want a girl his own age
+I used the .to_html method to change it to html text.
 
-We get along well but virtually have nothing in common except our interests",confessions,I’m 19 dating a 28 year old,0.0,0.33
-3,0.0,0.0,"I’ve been super horny and it’s been a while since I last had genuine good sex. My boss is such a charmer and while he’s about 10 years older than me, I want to ride him. 
+df_html = df.to_html()
 
-I think I might just need a vibrator or something lmao",confessions,I want to f*ck my boss,0.0,0.33
-4,0.0,1.0,"I’m somewhat suicidal and I can’t actually plan out how I want to do it. My mom is trying everything to help and she’s suffering so much to try and help me get but up and keep fighting. I can’t sleep at night and on the off chance I do it’s for 30 min to an hour and all my dreams are filled with nightmares. Iv been like this since I was a kid. Every day feels like torture and iv gotten so well at masking it that for over a decade and a half no one has noticed a single thing. I take my meds, I go out with friends and try to be active, i exercise. Yet I still feel just as miserable as before. Nothing brings me joy. Nothing brings me happiness. I can’t plan my own death because of how hard my mom is trying to save me. If I were to just leave the house today knowing I’m going to take my own life, I feel like I would be cheating me mom. Ik she loves me and she means well, but I am extremely miss understood and every time I reach out for help people just look at me and say “there’s no way your depressed, you always make people laugh and make them happy. Your probably just sad and not use to it.”Its exhausting living like this. I can no longer cry or show sad emotions. My face just looks numb when I’m alone. I feel like a burden to my mom. She’s trying to fix something that is totally broken. She’s trying to put me back together but she’s missing all the pieces. She’s looking for something that doesn’t exist. I want out of this life but I don’t know how to tell her. Iv come to the decision that if the opportunity of death shows it’s self then I will take it. Until then I will sit here and suffer and watch my mother try to help, knowing that I’m already gone. It’s all just a matter time before I take action",confessions,I act happy but I don’t want to be here,1.0,1.0
-5,0.0,2.0,"She’s been getting on my nerves this whole week. My sister (11) has been throwing tantrums and moping because my mum won’t get her a a frank green ($60 water bottle) along with an iPhone 14, a poppy Lismon bag and a gel nail polish kit along with some t shirts. She’s been complaining and gossiping to me about it since she’s gotten into 10 fights with my mum about it and it’s just so infuriating. I admit we’re not struggling with money but we also aren’t rich and honestly I think her reaction to not getting a water bottle is just sad.",confessions,My sister is crying over her presents and it’s getting annoying,2.0,1.0
-6,0.0,1.0,"So yeah as the title says there is a girl who has a crush on me. She is a 17 years old girl meanwhile im a 19 year old female turning 20 soon. I dont have any feelings towards her. I’m in love with her friend who is the same age as me.But thats not the topic we are going to talk about. The issue is that i keep seeing her getting bold with me everytime i meet her. (If you are wondering why we are meeting each other its because originally we are a group of 5 girls, and like if we hang out we always do it together) so she gets to come along. At first i thought she was just being friendly towards me but .. She always hugs me tightly, gets close to my face when she stands next to me, maintains eye contact with me and gets shy when i catch her doing so. Locks her hands with mine when we all walk together. Starts slowly caressing my hand…Gets red when she sees me. I view her as a really good friend and i dont want to hurt her feelings, so im not  sure how i can make her stop doing this type of stuff :///",confessions,Minor is in love with me..,1.0,1.0
-7,0.0,1.0,"When I was a kid/teen I constantly was abused. Not going into huge detail but a lot of it was from my dad. One of the things he did frequently, especially in my teen years was pin me down and scream in my face. Sweat, spittles, bad breath, and all. Wrists squeezed so tight I would loose circulation and my hands would go cold. For a little more perspective I am currently 5’1 as an adult woman and weigh about 110 lbs most of the time. At the time I was probably under 5” and around 80lbs. My dad on the other hand 5’7 weighing about 185lbs at the time. He would have me pinned down sometimes for hours and so of course I would try to escape which only made things worse and he would apply more weight. When this would happen most of the time my older brother would mind his business because, he didn’t want it done to him I’m sure. But there was one instance where my dad was doing this, and my brother was with his girlfriend in the room next door. It was getting bad and I started to cry begging for my big brother to save me. After a while of this, my brothers girlfriend told him that my screams were getting weaker, meaning I couldn’t breathe. I heard his door open up very quickly and next thing I knew the weight of this fat jerk was coming off of me, instant relief. I immediately get up and assess how my brother, who also was on the smaller side, was able to get him off. That’s when I saw my dad head locked in my brothers arms turning purple in the face. My initial thought was good let the asshole struggle for air and die I would finally be free from his never ending over the top punishments. I proceeded to let him sit like that for a good minute before I told my brother to stop. I wasn’t concerned at all about my dad getting killed, as much as I was about my brother getting in trouble for it. My brother was hesitant, so I had to actually scream at him “you’re going to kill him.” Afterwards my brother just up and left the room and my dad got up stunned, tired, and embarrassed. Left without saying a word to anybody. Still to this day I am thankful my brother was there and prepared to do what he had to protect me even if it meant he got hurt or went to prison.",confessions,My brother almost killed my dad TW abuse involved,1.0,1.0
-8,0.0,4.0,,confessions,I don't know how girls are happy about getting pregnant when I can't even handle my period. I'm 28 lol and always knew rhat I'd either adopt or get surrogate,4.0,1.0
-9,0.0,0.0,Just needed to say it.. im sorry,confessions,I want to dye,0.0,0.5
+Now I want to apply styles from a separate style CSS sheet to df_html.
+
+Then I want to use streamlit markdown or components to display to webpage.
+
+st.markdown(df_html_css)
+
+components.html(df_html_css)
+
+How do I go about doing that?",Python,Dataframe to html to html with css,2.0,1.0
+1,0.0,2.0,"im sure theres some bugs, but heres an example:
+
+```py
+from pointers import PyEval, PyFrame, struct_cast, Py
+
+code = PyFrame.get_code(PyEval.get_frame())
+Py.inc_ref(code)
+code_object = struct_cast(code)
+print(code_object.co_name)
+Py.dec_ref(code)
+```
+
+repo: [https://github.com/ZeroIntensity/pointers.py](https://github.com/ZeroIntensity/pointers.py)",Python,i (mostly) mapped the entire cpython abi to python,2.0,1.0
+2,0.0,0.0,"This video goes on to look at some more useful Python built-in functions  for strings. It then introduces how to format Python strings and how to  encode Python strings for non-English languages. The last bit of the  video reveals an important fact about Python strings.
+
+[Python strings: how to use them -- Part 2](https://youtu.be/4wN89Lqn0oI)",Python,Python strings: how to use them -- Part 2,0.0,0.5
+3,0.0,2.0,"Discussion of using Python in a professional environment, getting jobs in Python as well as ask questions about courses to further your python education!
+
+**This thread is not for recruitment, please see** r/PythonJobs **or the thread in the sidebar for that.**",Python,"Thursday Daily Thread: Python Careers, Courses, and Furthering Education!",2.0,1.0
+4,0.0,0.0,"Hey Everyone,
+
+This is the first part of a video series on using machine learning to predict QB passing yards. In this video, we're pulling data from nfl-data-py and manipulating it to later feed it into the regression model. This is going to be an end-to-end project taking NFL data and creating a machine learning model that can make predictions.
+
+If you've ever wanted to get started with sports machine learning this is the place to be.
+
+I use u/NukishPhilosphy's idea over on r/fantasyfootballcoding of an exponentially weighted moving average to look at a QB and defense's performance over the past 10 games, but more heavily weighting recency to pick up on trends quickly. He talked about it in this post on Open Source Football:
+
+[https://www.opensourcefootball.com/posts/2021-01-21-nfl-game-prediction-using-logistic-regression/](https://www.opensourcefootball.com/posts/2021-01-21-nfl-game-prediction-using-logistic-regression/)
+
+YouTube: [https://youtu.be/phJ2Mwxk9fc](https://youtu.be/phJ2Mwxk9fc)
+
+GitHub: [https://github.com/tbryan2/qb-passing-yards](https://github.com/tbryan2/qb-passing-yards)",Python,Creating a Regression Model to Predict QB Passing Yards,0.0,0.5
+5,0.0,51.0,"Hi,
+
+I am a member of the pandas core team (phofl on github). We are currently working on a new feature called Copy on Write. It is designed to get rid of all the inconsistencies in indexing operations. The feature is still actively developed. We would love to get feedback and general thoughts on this, since it will be a pretty substantial change. I wrote a post showing some different forms of behavior in indexing operations and how Copy on Write impacts them:
+
+https://towardsdatascience.com/a-solution-for-inconsistencies-in-indexing-operations-in-pandas-b76e10719744
+
+Happy to have a discussion here or on medium.",Python,Get rid of SettingWithCopyWarning in pandas with Copy on Write,51.0,0.93
+6,0.0,2.0,"Hello u/everyone, the latest releases of [starlette-admin](https://github.com/jowilf/starlette-admin) add support for [Odmantic](https://github.com/art049/odmantic/) (an async python ODM) , better support for dynamic list and embedded document, custom batch actions, ...
+
+Where to start?
+
+* Check out [the documentation](https://jowilf.github.io/starlette-admin).
+* Try the [live demo](https://starlette-admin-demo.jowilf.com/). ([Source code](https://github.com/jowilf/starlette-admin-demo))
+* Try the several usage examples included in the [/examples](https://github.com/jowilf/starlette-admin/tree/main/examples) folder
+
+Any feedback would be appreciated. 
+What's your suggestion for the next ORM/ODM to support ?",Python,starlette-admin: support for Odmantic &amp; many more,2.0,0.63
+7,0.0,0.0,"This video is the first of the two videos about strings and string  operations in Python. It shows how to declare a single line string and a  multiple line string, what helpful operations on strings you can  incorporate into your code, and how strings are indexed in Python.
+
+[Python strings: how to use them -- Part 1](https://youtu.be/1o1eCzU9loU)",Python,Python strings: how to use them -- Part 1,0.0,0.2
+8,0.0,3.0,"Is there a method to automate key presses on windows that aren't in focus - e.g. I am on netflix watching The Office (Usa obv) and my game in the background is doing a simple but tedious task that would be like 3 buttons long, every 30 seconds. 
+
+I can automate using like pyautogui or whatever if on the active window but no clue how to do it while watching netflix, saw a thread about someone making something for 2 wow accounts (one is the player, the background player being an automated healer etc) so it is probably possible. I'd rather stay with python but if someone has already made the program for like another language that I've only gotta like change a few lines I don't mind doing that. 
+
+Thanks.",Python,Automation on inactive windows.,3.0,0.71
+9,0.0,8.0,"Hi all,
+
+I've been developing a game engine as a learning exercise -- it's a (very) simple Entity-Component-System game engine for Python, built on Pygame, with an emphasis on ease of use.
+
+[https://github.com/rik-cross/gamma](https://github.com/rik-cross/gamma)
+
+It's not quite finished, but lots of functionality has been added. I don't have any documentation, but put together a short video series to show how to use the engine to create a simple coin-collecting game.
+
+[https://www.youtube.com/playlist?list=PLQaniv5ve2ygtBCpEiLC\_fFa0Um-51Txu](https://www.youtube.com/playlist?list=PLQaniv5ve2ygtBCpEiLC_fFa0Um-51Txu)
+
+There are also lots of examples:
+
+[https://github.com/rik-cross/gamma/tree/main/examples](https://github.com/rik-cross/gamma/tree/main/examples)
+
+It's MIT licence, so feel free to use the code however you like. Feedback and suggestions are always appreciated.
+
+Thanks!",Python,Gamma ECS Game Engine,8.0,0.73

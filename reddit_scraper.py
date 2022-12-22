@@ -28,10 +28,10 @@ TOKEN = res.json()['access_token']
 headers['Authorization'] = f'bearer {TOKEN}'
 
 # Use GET /hot to get hot posts 
-res = requests.get('https://oauth.reddit.com/r/confessions/hot', headers=headers, params={'limit': '10'})
+res = requests.get('https://oauth.reddit.com/r/Python/hot', headers=headers, params={'limit': '10'})
 
 # Use GET /new to get new posts, use 'after' xor 'before' param to only get posts after/before a certain post (use fullname)
-res = requests.get('https://oauth.reddit.com/r/confessions/new', headers=headers, params={'limit': '10'})
+res = requests.get('https://oauth.reddit.com/r/Python/new', headers=headers, params={'limit': '10'})
 
 # Create pandas df to store data from json (use res.json() to retrieve data)
 df = pd.DataFrame()
