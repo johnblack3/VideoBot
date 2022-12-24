@@ -1,6 +1,5 @@
 """
 Script designed to scrape reddit posts.
-Used tutorial https://www.youtube.com/watch?v=FdjVoOf9HN4m
 
 John Black
 11/7/22
@@ -9,8 +8,10 @@ import requests
 import pandas as pd
 
 # Personal use script (CLIENT_ID) and secret key
+with open('sk.txt', 'r') as f: # Get secret key from file
+    sk = f.read()
 CLIENT_ID = 'D1Rl8K7DtN4CUNuFYHL3Xg'
-SECRET_KEY = 'Kb3M76KUw2gy8jO3tiyZoIu8Wwsajg'
+SECRET_KEY = sk
 
 auth = requests.auth.HTTPBasicAuth(CLIENT_ID, SECRET_KEY)
 
@@ -27,28 +28,36 @@ res = requests.post('https://www.reddit.com/api/v1/access_token', auth=auth, dat
 TOKEN = res.json()['access_token']
 headers['Authorization'] = f'bearer {TOKEN}'
 
-# Use GET /hot to get hot posts 
-res = requests.get('https://oauth.reddit.com/r/Python/hot', headers=headers, params={'limit': '10'})
+def get_posts(subreddit='Python', count=10, listing='hot'):
+    """
+    Use Reddit API to gather posts according to input criteria
+    
+    Arguments:
+    subreddit (string): name of subreddit (default=Python)
+    count (int): number of posts to retrieve (default=10)
+    listing (string): type of listings to retrieve, hot, new, top, etc. (default=hot)
+    """
+    # Use 'after' xor 'before' param to only get posts after/before a certain post (use fullname)
+    # fullname (post id): post['kind'] + '_' + post['data']['id']
+    res = requests.get('https://oauth.reddit.com/r/' + subreddit + '/' + listing, headers=headers, params={'limit': '10'})
 
-# Use GET /new to get new posts, use 'after' xor 'before' param to only get posts after/before a certain post (use fullname)
-res = requests.get('https://oauth.reddit.com/r/Python/new', headers=headers, params={'limit': '10'})
+    # Create pandas df to store data from json (use res.json() to retrieve data)
+    df = pd.DataFrame()
 
-# Create pandas df to store data from json (use res.json() to retrieve data)
-df = pd.DataFrame()
+    # Add data to df; use post['data'].keys() to get all available keys
+    for post in res.json()['data']['children']:
+        df = df.append({
+            'subreddit': post['data']['subreddit'],
+            'title': post['data']['title'],
+            'selftext': post['data']['selftext'],
+            'upvote_ratio': post['data']['upvote_ratio'],
+            'ups': post['data']['ups'],
+            'downs': post['data']['downs'],
+            'score': post['data']['score']
+            #'thumbnail': post['data']['thumbnail']
+        }, ignore_index=True)
 
-# Add data to df; use post['data'].keys() to get all available keys
-for post in res.json()['data']['children']:
-    df = df.append({
-        'subreddit': post['data']['subreddit'],
-        'title': post['data']['title'],
-        'selftext': post['data']['selftext'],
-        'upvote_ratio': post['data']['upvote_ratio'],
-        'ups': post['data']['ups'],
-        'downs': post['data']['downs'],
-        'score': post['data']['score']
-    }, ignore_index=True)
+    # save data frame to file
+    df.to_csv('df.csv')
 
-df.to_csv('df.csv')
-
-# fullname (post id)
-post['kind'] + '_' + post['data']['id']
+get_posts(subreddit='confession', listing='top')
