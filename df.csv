@@ -1,90 +1,13 @@
-,downs,score,selftext,subreddit,title,ups,upvote_ratio
-0,0.0,2.0,"I have a dataframe df. 
+,author,downs,score,selftext,subreddit,subreddit_name_prefixed,title,ups,upvote_ratio
+0,Muted_Spirit_3695,0.0,852.0,I was out of work in 2020 and sold quite a few drugs to pay the bills.  Now I’m an elementary school teacher in the same town.  I’m worried one or more of the parents will recognize me,confession,r/confession,I used to be a drug dealer and now I’m an elementary school teacher,852.0,0.96
+1,Flakes6969,0.0,212.0,As you have read the title I dropped out of college. I was in college(med school) for 2 years already and exams where coming up and I got depression. Fast forward the day before the exam I couldn’t handle it and I dropped out. My parents still don’t know about this yet.,confession,r/confession,I dropped out of college without my parents knowing,212.0,0.94
+2,Temperature-Still,0.0,7.0,"In college, I never joined a fraternity but became good friends with some of the guys in the frat without paying the fees (strongly recommend this route). Being that we were friends, I got invited to a lot of their parties and private gatherings. It began as a drunken gag where I would take a small item (salt shaker, fridge magnet, kitchen utensil, etc.) but over time I began to try and one-up myself. My favorite item to procure were the plastic knobs to the range on the oven. At one point; over multiple different houses/parties, I gathered a total of like 16 different knobs. From one house alone having multiple parties throughout the year, I ended owning all but one knob so they had to pull the knob off and use it for the other burners on the oven. Years after graduating, I heard from acquaintances that multiple people had lost their deposits because of my debauchery . I regret nothing.",confession,r/confession,I’ve stolen an item from every college party I’ve ever been to..,7.0,0.67
+3,w83funkohate,0.0,1.0,"Que tontería pasarte la vida menospreciando una fecha y que cuando más ganas tienes de meterte al juego de querer participar, estás tremendamente solo. Cuánto la extraño espero que esté muy bien. Y cuánto quisiera haber compartido algo en familia pero está demasiado rota. Vivo con un familiar que quiero mucho pero no me habla a menos que sea para reclamarme algo. Y así nos pasamos el día, sin hablar, después de haber gastado como unos estúpidos dinero en cena y cosas (no es que nos sobre) que compartimos en silencio esperando desesperadamente que se termine para volver a encerrarme en mi cuarto. Que cojudez.",confession,r/confession,una navidad de mrd y ya año nuevo para qué🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲,1.0,1.0
+4,vddfccbbgff,0.0,1.0,"So when I was a kid me and my little brother went to a daycare everyday before we started going to school. This daycare was hectic little goblin kids running around everywhere one kid left a huge scar on my with there bear nails, but that’s a story for another day. So anyway in this room full of very tiny children (like just learned how to walk) we where playing tag and while I’m running there’s this little kid in front of me. To the right of me is a tv to the left is my little brother. I have no choice but to trip him or plow over the toddler. I trip my brother and keep running, luckily no one had noticed but then there’s a crack and crying. I stop to see what happened and there’s my little brother sobbing on the floor holding his arm. My babysitter got an ice pack called my mom and he spent a night in the hospital with a broken arm.",confession,r/confession,I broke my litte brothers arm when I was a little kid.,1.0,1.0
+5,aiooelqpu,0.0,1.0,"Un dia que yo tenía 8 o 9 años estaba jugando en la aviación de mi tío que quedaba alfrente de la de mi abuelo susede que cuando yo IVA jugando ví una sombra bajar para donde están mis hermanos (me avía quedado quieto) 5 minutos después baje y estaban bien le dije a mi abuela lo que pasó ella me dijo que estaban hay para protejer nos, no le hice caso a lo sucedido cuando en 2 años después estába con mi hermano y de la nada se abrió la llave del agua pensamos que era mi abuela pero ella nos gritó que porque la abrimos le dijimos que no y fue mi hermano el que bajo mi tío dice que es una mujer y un niño y mi abuela dice que es un hombre yo la verdad noce que hacer mi papá también me a dicho que vio sombras y todo por aya noce si a quien creerle o que pero yo quiero que alguien si sabe de eso me explique que pasa y les pido que no publiquen está historia en otros lados ya que no quiero que mi familia se entere que publique esto",confession,r/confession,necesito ayuda noce que hacer no se a quien creer pero necesito ayuda,1.0,1.0
+6,russrussrussrussruss,0.0,1.0,"I function fairly well, by other’s standards. I have a job, I live on my own, I pay for most everything in my life. I don’t hold myself to other’s standards, I’ve done a lot of research into the mind trying to improve myself so I know most of the detrimental things to avoid. I also know that I should take pride in these things myself without acknowledgment from others and focus on the things I’ve done, the positive aspects of my life, and not compare myself to anyone else. Despite all this, I am miserable. My mind is constantly filled with negativity, my emotions are dull unless I slip and start degrading myself which brings out anger, regret, and sadness. These should not be the only emotions I feel, and I should allow myself to feel positive emotions. 
 
-I used the .to_html method to change it to html text.
+I (at least I think) had a stroke, about 1 1/2 years ago. I didn’t get medical treatment, as I wasn’t aware of it. But, I’ve gone to an emergency room recently and they said that, to them, it didn’t seem like it. And If something similar did happen, and it was that long ago, it’s not something to worry about. It still lingers in my mind. But, I’m also a deeply paranoid person, one of my friends even called me crazy (semi-jokingly, he’s aware of all of the above) and he’s not entirely wrong. I’m always unsure where paranoia ends and rational fear begins. Besides a stroke, I am fairly certain I have brain damage, the symptoms are all there. But, I can function. I can type. I can think semi properly. These are things I think about whenever it pops into mind to keep myself in good spirits. 
 
-df_html = df.to_html()
-
-Now I want to apply styles from a separate style CSS sheet to df_html.
-
-Then I want to use streamlit markdown or components to display to webpage.
-
-st.markdown(df_html_css)
-
-components.html(df_html_css)
-
-How do I go about doing that?",Python,Dataframe to html to html with css,2.0,1.0
-1,0.0,2.0,"im sure theres some bugs, but heres an example:
-
-```py
-from pointers import PyEval, PyFrame, struct_cast, Py
-
-code = PyFrame.get_code(PyEval.get_frame())
-Py.inc_ref(code)
-code_object = struct_cast(code)
-print(code_object.co_name)
-Py.dec_ref(code)
-```
-
-repo: [https://github.com/ZeroIntensity/pointers.py](https://github.com/ZeroIntensity/pointers.py)",Python,i (mostly) mapped the entire cpython abi to python,2.0,1.0
-2,0.0,0.0,"This video goes on to look at some more useful Python built-in functions  for strings. It then introduces how to format Python strings and how to  encode Python strings for non-English languages. The last bit of the  video reveals an important fact about Python strings.
-
-[Python strings: how to use them -- Part 2](https://youtu.be/4wN89Lqn0oI)",Python,Python strings: how to use them -- Part 2,0.0,0.5
-3,0.0,2.0,"Discussion of using Python in a professional environment, getting jobs in Python as well as ask questions about courses to further your python education!
-
-**This thread is not for recruitment, please see** r/PythonJobs **or the thread in the sidebar for that.**",Python,"Thursday Daily Thread: Python Careers, Courses, and Furthering Education!",2.0,1.0
-4,0.0,0.0,"Hey Everyone,
-
-This is the first part of a video series on using machine learning to predict QB passing yards. In this video, we're pulling data from nfl-data-py and manipulating it to later feed it into the regression model. This is going to be an end-to-end project taking NFL data and creating a machine learning model that can make predictions.
-
-If you've ever wanted to get started with sports machine learning this is the place to be.
-
-I use u/NukishPhilosphy's idea over on r/fantasyfootballcoding of an exponentially weighted moving average to look at a QB and defense's performance over the past 10 games, but more heavily weighting recency to pick up on trends quickly. He talked about it in this post on Open Source Football:
-
-[https://www.opensourcefootball.com/posts/2021-01-21-nfl-game-prediction-using-logistic-regression/](https://www.opensourcefootball.com/posts/2021-01-21-nfl-game-prediction-using-logistic-regression/)
-
-YouTube: [https://youtu.be/phJ2Mwxk9fc](https://youtu.be/phJ2Mwxk9fc)
-
-GitHub: [https://github.com/tbryan2/qb-passing-yards](https://github.com/tbryan2/qb-passing-yards)",Python,Creating a Regression Model to Predict QB Passing Yards,0.0,0.5
-5,0.0,51.0,"Hi,
-
-I am a member of the pandas core team (phofl on github). We are currently working on a new feature called Copy on Write. It is designed to get rid of all the inconsistencies in indexing operations. The feature is still actively developed. We would love to get feedback and general thoughts on this, since it will be a pretty substantial change. I wrote a post showing some different forms of behavior in indexing operations and how Copy on Write impacts them:
-
-https://towardsdatascience.com/a-solution-for-inconsistencies-in-indexing-operations-in-pandas-b76e10719744
-
-Happy to have a discussion here or on medium.",Python,Get rid of SettingWithCopyWarning in pandas with Copy on Write,51.0,0.93
-6,0.0,2.0,"Hello u/everyone, the latest releases of [starlette-admin](https://github.com/jowilf/starlette-admin) add support for [Odmantic](https://github.com/art049/odmantic/) (an async python ODM) , better support for dynamic list and embedded document, custom batch actions, ...
-
-Where to start?
-
-* Check out [the documentation](https://jowilf.github.io/starlette-admin).
-* Try the [live demo](https://starlette-admin-demo.jowilf.com/). ([Source code](https://github.com/jowilf/starlette-admin-demo))
-* Try the several usage examples included in the [/examples](https://github.com/jowilf/starlette-admin/tree/main/examples) folder
-
-Any feedback would be appreciated. 
-What's your suggestion for the next ORM/ODM to support ?",Python,starlette-admin: support for Odmantic &amp; many more,2.0,0.63
-7,0.0,0.0,"This video is the first of the two videos about strings and string  operations in Python. It shows how to declare a single line string and a  multiple line string, what helpful operations on strings you can  incorporate into your code, and how strings are indexed in Python.
-
-[Python strings: how to use them -- Part 1](https://youtu.be/1o1eCzU9loU)",Python,Python strings: how to use them -- Part 1,0.0,0.2
-8,0.0,3.0,"Is there a method to automate key presses on windows that aren't in focus - e.g. I am on netflix watching The Office (Usa obv) and my game in the background is doing a simple but tedious task that would be like 3 buttons long, every 30 seconds. 
-
-I can automate using like pyautogui or whatever if on the active window but no clue how to do it while watching netflix, saw a thread about someone making something for 2 wow accounts (one is the player, the background player being an automated healer etc) so it is probably possible. I'd rather stay with python but if someone has already made the program for like another language that I've only gotta like change a few lines I don't mind doing that. 
-
-Thanks.",Python,Automation on inactive windows.,3.0,0.71
-9,0.0,8.0,"Hi all,
-
-I've been developing a game engine as a learning exercise -- it's a (very) simple Entity-Component-System game engine for Python, built on Pygame, with an emphasis on ease of use.
-
-[https://github.com/rik-cross/gamma](https://github.com/rik-cross/gamma)
-
-It's not quite finished, but lots of functionality has been added. I don't have any documentation, but put together a short video series to show how to use the engine to create a simple coin-collecting game.
-
-[https://www.youtube.com/playlist?list=PLQaniv5ve2ygtBCpEiLC\_fFa0Um-51Txu](https://www.youtube.com/playlist?list=PLQaniv5ve2ygtBCpEiLC_fFa0Um-51Txu)
-
-There are also lots of examples:
-
-[https://github.com/rik-cross/gamma/tree/main/examples](https://github.com/rik-cross/gamma/tree/main/examples)
-
-It's MIT licence, so feel free to use the code however you like. Feedback and suggestions are always appreciated.
-
-Thanks!",Python,Gamma ECS Game Engine,8.0,0.73
+Regardless, I still feel lost every day. I feel as though the progress I have made is minuscule. The road ahead is always long, and it has been a relatively short amount of time on my road, but it still seems near impossible. Thank you for listening, I really just needed to vent a little bit. Bless you all, happy holidays Reddit.",confession,r/confession,I am deeply lost mentally; I have no concept of who I am.,1.0,0.67
+7,NonHealingUlcer,0.0,0.0,"I wanted to talk to one girl 2 years ago, never did actually but I still hate the fact that I once wanted to talk to her.",confession,r/confession,I'm too ugly to look at the girls in my university.,0.0,0.25

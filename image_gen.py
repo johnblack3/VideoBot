@@ -1,23 +1,30 @@
 from PIL import Image, ImageDraw, ImageFont
 from moviepy.editor import VideoFileClip
+from header_gen import generate_header
 import os
 
-def generate_image(text="No Text Inputted", size=12, background_video=None):
+def generate_image(text="No Text Inputted", font_size=12, background_video=None,
+                    subreddit_icon='media/default_icon.png', subreddit='r/subreddit', username='u/username'):
     """
     Draw a text on an image and saves it
     
     Arguments:
     text (string): text to be converted to images
-    size (int): size of text in pixels (default=12)
+    font_size (int): size of text in pixels (default=12)
     background_video (file name): video to be used in the background (default=None)
+    subreddit_icon (file name): subreddit icon to be used in header (default=media/default_icon.png)
+    subreddit (string): name of subreddit
+    username (string): name of author
     """
     image_list = []
-    fnt = ImageFont.truetype('arial.ttf', size)
+    fnt = ImageFont.truetype('arial.ttf', font_size)
     anchor = (10,6)
     # get pixel width of background video clip
     if background_video:
         video = VideoFileClip(background_video)
-        video_width = video.size[0]
+        if video.size[0] > video.size[1]:
+            video_width = video.size[1] * (9/16)
+        else: video_width = video.size[0]
         image_width = video_width * 0.80
     else: image_width = 350
     # split text into paragraphs and remove whitespace
@@ -28,7 +35,6 @@ def generate_image(text="No Text Inputted", size=12, background_video=None):
         # calculate image size
         text_draw = ImageDraw.Draw(Image.new(mode = "RGB", size = (0,0)))
         bound_box = text_draw.textbbox(anchor, paragraphs[i], font=fnt)
-        # handle image wider than image_width
         print('paragraphs[i] (top of for): ', paragraphs[i])
         start_of_line = 0
         end_of_line = paragraphs[i].find(' ')
@@ -57,12 +63,17 @@ def generate_image(text="No Text Inputted", size=12, background_video=None):
         bound_box = text_draw.textbbox(anchor, paragraphs[i], font=fnt)
         print(bound_box, i)
         
-        # create image; image = Image.new(mode = "RGB", size = (int(size/2)*len(text),size+20), color = "white")
-        image = Image.new(mode = "RGB", size = (bound_box[2]+anchor[0], bound_box[3]+anchor[1]+6), color = "black")
+        image = Image.new(mode = "RGB", size = (bound_box[2]+anchor[0], bound_box[3]+anchor[1]+6), color = "#111110")
         draw = ImageDraw.Draw(image)
         # draw text
         draw.text(anchor, paragraphs[i], font=fnt, fill=(255,255,255))
+        
+        # generate header for the first paragraph (title)
+        if i == 0:
+            image = generate_header(subreddit_icon, title_img_obj=image, subreddit=subreddit, username=username)
+        
         # save file
         image.save('media\image' + str(i) + '.png')
         image_list.append('media\image' + str(i) + '.png')
+
     return image_list

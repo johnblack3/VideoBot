@@ -61,10 +61,20 @@ def get_posts(subreddit='Python', count=10, listing='hot'):
     # save data frame to file
     df.to_csv('df.csv')
 
+def get_icon(subreddit='confession'):
+    """
+    Gets icon for subreddit. Returns default icon if no icon is available.
+    
+    Argument:
+    subreddit (string): name of subreddit
+    """
     res2 = requests.get('https://oauth.reddit.com/r/' + subreddit + '/about', headers=headers)
 
     subreddit_icon = res2.json()['data']['icon_img']
     if subreddit_icon:
         open('media/subreddit_icon.png', 'wb').write(requests.get(subreddit_icon).content)
+        return 'media/subreddit_icon.png'
+    else:
+        return 'media/default_icon.png'
 
-get_posts(subreddit='funny', listing='top')
+get_posts(subreddit='confession', listing='top')

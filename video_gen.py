@@ -1,4 +1,5 @@
 from moviepy.editor import ImageClip, VideoFileClip, CompositeVideoClip, AudioFileClip
+import os
 
 def generate_video(background_video, image_list, audio_list, final_video_name='final_video'):
     """
@@ -38,3 +39,8 @@ def generate_video(background_video, image_list, audio_list, final_video_name='f
 
     # write video object to file
     video.write_videofile('media/' + final_video_name + '.mp4')
+
+    # delete image and audio files
+    for i in range(len(image_list)):
+        os.remove(image_list[i])
+        os.remove(audio_list[i])
