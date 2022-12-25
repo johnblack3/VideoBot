@@ -48,16 +48,23 @@ def get_posts(subreddit='Python', count=10, listing='hot'):
     for post in res.json()['data']['children']:
         df = df.append({
             'subreddit': post['data']['subreddit'],
+            'subreddit_name_prefixed': post['data']['subreddit_name_prefixed'],
             'title': post['data']['title'],
             'selftext': post['data']['selftext'],
             'upvote_ratio': post['data']['upvote_ratio'],
             'ups': post['data']['ups'],
             'downs': post['data']['downs'],
-            'score': post['data']['score']
-            #'thumbnail': post['data']['thumbnail']
+            'score': post['data']['score'],
+            'author': post['data']['author']
         }, ignore_index=True)
 
     # save data frame to file
     df.to_csv('df.csv')
 
-get_posts(subreddit='confession', listing='top')
+    res2 = requests.get('https://oauth.reddit.com/r/' + subreddit + '/about', headers=headers)
+
+    subreddit_icon = res2.json()['data']['icon_img']
+    if subreddit_icon:
+        open('media/subreddit_icon.png', 'wb').write(requests.get(subreddit_icon).content)
+
+get_posts(subreddit='funny', listing='top')
