@@ -25,13 +25,16 @@ def generate_image(text="No Text Inputted", font_size=12, background_video=None,
         if video.size[0] > video.size[1]:
             video_width = video.size[1] * (9/16)
         else: video_width = video.size[0]
-        image_width = video_width * 0.80
+        image_width = int(video_width * 0.80)
     else: image_width = 350
     # split text into paragraphs and remove whitespace
     paragraphs = text.split('\n')
     paragraphs = [i for i in paragraphs if i not in ['', ' ']]
     # create image for each paragraph
     for i in range(len(paragraphs)):
+        # create font for title
+        if i == 0:
+            fnt = ImageFont.truetype('arial.ttf', font_size + 2)
         # calculate image size
         text_draw = ImageDraw.Draw(Image.new(mode = "RGB", size = (0,0)))
         bound_box = text_draw.textbbox(anchor, paragraphs[i], font=fnt)
@@ -62,8 +65,14 @@ def generate_image(text="No Text Inputted", font_size=12, background_video=None,
 
         bound_box = text_draw.textbbox(anchor, paragraphs[i], font=fnt)
         print(bound_box, i)
-        
-        image = Image.new(mode = "RGB", size = (bound_box[2]+anchor[0], bound_box[3]+anchor[1]+6), color = "#111110")
+
+        image_width = bound_box[2] + anchor[0]
+        image_height = bound_box[3] + anchor[1] + 6
+        # make title image wider (helps with generate_header calculations)
+        if i == 0 and bound_box[2] < video_width * 0.60:
+            image_width = int(video_width * 0.75 - anchor[0])
+
+        image = Image.new(mode = "RGB", size = (image_width, image_height), color = "#111110")
         draw = ImageDraw.Draw(image)
         # draw text
         draw.text(anchor, paragraphs[i], font=fnt, fill=(255,255,255))

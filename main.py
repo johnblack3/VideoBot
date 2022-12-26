@@ -5,7 +5,7 @@ from reddit_scraper import get_icon
 import pandas as pd
 
 # generate text
-item_to_read = 2
+item_to_read = 6
 df = pd.read_csv('df.csv')
 title = df.title[item_to_read]
 selftext = df.selftext[item_to_read]
@@ -13,6 +13,18 @@ text_to_read = title + "\n" + selftext
 
 subreddit = df.subreddit[item_to_read]
 username = df.author[item_to_read]
+
+paragraphs = text_to_read.split('\n')
+paragraphs = [i for i in paragraphs if i not in ['', ' ']]
+for i in range(len(paragraphs)):
+    if len(paragraphs[i]) > 800:
+        middle = int(len(paragraphs[i])/2)
+        middle_period = paragraphs[i].rfind('.', 0, middle)
+        first_half = paragraphs[i][0:middle_period+1]
+        second_half = paragraphs[i][middle_period:-1]
+        paragraphs[i] = first_half
+        paragraphs.insert(i+1, second_half)
+text_to_read = '\n'.join(paragraphs)
 
 subreddit_icon = get_icon(subreddit=subreddit)
 

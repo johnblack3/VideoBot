@@ -77,4 +77,5 @@ def get_icon(subreddit='confession'):
     else:
         return 'media/default_icon.png'
 
-get_posts(subreddit='confession', listing='top')
+if __name__ == "__main__":
+    get_posts(subreddit='stocks', listing='top')
