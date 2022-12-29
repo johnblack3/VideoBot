@@ -13,24 +13,34 @@ text_to_read = title + "\n" + selftext
 
 subreddit = df.subreddit[item_to_read]
 username = df.author[item_to_read]
-
+'''
 paragraphs = text_to_read.split('\n')
 paragraphs = [i for i in paragraphs if i not in ['', ' ']]
 for i in range(len(paragraphs)):
-    if len(paragraphs[i]) > 800:
+    if len(paragraphs[i]) > 200:
         middle = int(len(paragraphs[i])/2)
         middle_period = paragraphs[i].rfind('.', 0, middle)
         first_half = paragraphs[i][0:middle_period+1]
-        second_half = paragraphs[i][middle_period:-1]
+        second_half = paragraphs[i][middle_period+2:]
         paragraphs[i] = first_half
         paragraphs.insert(i+1, second_half)
+text_to_read = '\n'.join(paragraphs)
+'''
+# split text into sentences
+paragraphs = text_to_read.split('.')
+paragraphs = [i for i in paragraphs if i not in ['', ' ']]
+for i in range(len(paragraphs)):
+    if paragraphs[i][0] == ' ':
+        paragraphs[i] = paragraphs[i][1:]
+    if i != 0 and paragraphs[i][-1] not in ['?', '!']:
+        paragraphs[i] = paragraphs[i] + '.'
 text_to_read = '\n'.join(paragraphs)
 
 subreddit_icon = get_icon(subreddit=subreddit)
 
 audio_list = generate_audio(text_to_read)
 
-image_list = generate_image(text=text_to_read, font_size=16, background_video='media/background_video.mp4',
+image_list = generate_image(text=text_to_read, font_size=16, background_video='media/background1.mp4',
                             subreddit_icon=subreddit_icon, subreddit=subreddit, username=username)
 
-generate_video('media/background_video.mp4', image_list, audio_list)
+generate_video('media/background1.mp4', image_list, audio_list, background_video_start=2985)

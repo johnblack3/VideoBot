@@ -1,7 +1,7 @@
 from moviepy.editor import ImageClip, VideoFileClip, CompositeVideoClip, AudioFileClip
 import os
 
-def generate_video(background_video, image_list, audio_list, final_video_name='final_video'):
+def generate_video(background_video, image_list, audio_list, background_video_start=0, final_video_name='final_video'):
     """
     Generates video clips with synchronized images and audio
     
@@ -32,8 +32,17 @@ def generate_video(background_video, image_list, audio_list, final_video_name='f
         total_duration += audio_clip.duration
         video_and_images.append(image_clip)
 
+    # create background video clip and crop to size
+    background_video_clip = (VideoFileClip(background_video, audio=False)
+                                .subclip(background_video_start, background_video_start + total_duration))
+    if background_video_clip.w > background_video_clip.h:
+        top_left_corner = int((background_video_clip.w - (9/16) * background_video_clip.h)/2)
+        background_video_clip = background_video_clip.crop(x1=top_left_corner,
+                                                            y1=0, 
+                                                            x2=background_video_clip.w - top_left_corner, 
+                                                            y2=background_video_clip.h)
+
     # add background video to list for CompositeVideoClip object
-    background_video_clip = VideoFileClip(background_video, audio=False).subclip(0, total_duration)
     video_and_images.insert(0, background_video_clip)
     video = CompositeVideoClip(video_and_images).subclip(0, total_duration)
 
