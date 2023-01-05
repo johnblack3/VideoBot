@@ -3,14 +3,14 @@ from moviepy.editor import VideoFileClip
 from header_gen import generate_header
 import os
 
-def generate_image(text="No Text Inputted", font_size=12, background_video=None,
+def generate_image(text="No Text Inputted", font_size=16, background_video=None,
                     subreddit_icon='media/default_icon.png', subreddit='r/subreddit', username='u/username'):
     """
     Draw a text on an image and saves it
     
     Arguments:
     text (string): text to be converted to images
-    font_size (int): size of text in pixels (default=12)
+    font_size (int): size of text in pixels (default=16)
     background_video (file name): video to be used in the background (default=None)
     subreddit_icon (file name): subreddit icon to be used in header (default=media/default_icon.png)
     subreddit (string): name of subreddit
@@ -25,8 +25,8 @@ def generate_image(text="No Text Inputted", font_size=12, background_video=None,
         if video.size[0] > video.size[1]:
             video_width = video.size[1] * (9/16)
         else: video_width = video.size[0]
-        image_width = int(video_width * 0.80)
-    else: image_width = 350
+        max_image_width = int(video_width * 0.75)
+    else: max_image_width = 350
     # split text into paragraphs and remove whitespace
     paragraphs = text.split('\n')
     paragraphs = [i for i in paragraphs if i not in ['', ' ']]
@@ -35,20 +35,23 @@ def generate_image(text="No Text Inputted", font_size=12, background_video=None,
         # create font for title
         if i == 0:
             fnt = ImageFont.truetype('arial.ttf', font_size + 2)
+        else:
+            fnt = ImageFont.truetype('arial.ttf', font_size)
         # calculate image size
         text_draw = ImageDraw.Draw(Image.new(mode = "RGB", size = (0,0)))
         bound_box = text_draw.textbbox(anchor, paragraphs[i], font=fnt)
-        print('paragraphs[i] (top of for): ', paragraphs[i])
+        #print('paragraphs[i] (top of for): ', paragraphs[i])
         start_of_line = 0
         end_of_line = paragraphs[i].find(' ')
         for iterate in range(paragraphs[i].count(' ') + 1):
-            print("TOP OF FOR LOOP ", "iteration:",iterate, " text_length:", text_draw.textlength(paragraphs[i][start_of_line:end_of_line], font=fnt), end='')
+            #print("\nTOP OF FOR LOOP ", "iteration:",iterate, " text_length:", text_draw.textlength(paragraphs[i][start_of_line:end_of_line], font=fnt), end='')
             #print("length according to bound box:", text_draw.textbbox(anchor, paragraphs[i][0:paragraphs[i].find('\n')], font=fnt), "\ntext being used:", paragraphs[i][0:paragraphs[i].find('\n')])
-            if text_draw.textlength(paragraphs[i][start_of_line:end_of_line], font=fnt) < image_width: # paragraphs[i][start_of_line:end_of_line]
+            #print(text_draw.textlength(paragraphs[i][start_of_line:end_of_line], font=fnt), max_image_width)
+            if text_draw.textlength(paragraphs[i][start_of_line:end_of_line], font=fnt) < max_image_width: # paragraphs[i][start_of_line:end_of_line]
                 previous_end_of_line = end_of_line
                 end_of_line = paragraphs[i].find(' ', end_of_line+1)
                 print("\nIF: ", paragraphs[i][start_of_line:end_of_line], " end_of_line:", end_of_line)
-                if end_of_line == -1 and text_draw.textlength(paragraphs[i][start_of_line:end_of_line], font=fnt) < image_width: break
+                if end_of_line == -1 and text_draw.textlength(paragraphs[i][start_of_line:end_of_line], font=fnt) < max_image_width: break
             else:
                 print("\nELSE: ", text_draw.textlength(paragraphs[i][start_of_line:previous_end_of_line], font=fnt))
                 paragraphs[i] = paragraphs[i][:previous_end_of_line] + '\n' + paragraphs[i][previous_end_of_line + 1:]
@@ -58,10 +61,8 @@ def generate_image(text="No Text Inputted", font_size=12, background_video=None,
                 print('paragraphs[i] (bottom of else): ', paragraphs[i])
                 previous_end_of_line = end_of_line
                 end_of_line = paragraphs[i].find(' ', end_of_line+1)
-                print("IF inside ELSE: ", paragraphs[i][start_of_line:end_of_line], end_of_line)
                 previous_end_of_line = end_of_line
                 end_of_line = paragraphs[i].find(' ', end_of_line+1)
-                print("second 'IF' inside ELSE: ", paragraphs[i][start_of_line:end_of_line], end_of_line)
 
         bound_box = text_draw.textbbox(anchor, paragraphs[i], font=fnt)
         print(bound_box, i)

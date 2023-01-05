@@ -40,7 +40,6 @@ def generate_header(subreddit_icon, title_img_obj, subreddit='subreddit', userna
     dst.paste(header_background, (0, 0))
     dst.paste(circle_icon, (circle_icon_center, circle_icon_center))
     dst.paste(title_img_obj, (0, header_background.height))
-    dst.save('media/header.png')
     return dst
 
 if __name__ == "__main__":
