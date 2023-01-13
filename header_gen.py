@@ -22,7 +22,7 @@ def generate_header(subreddit_icon, title_img_obj, subreddit='subreddit', userna
 
     # create circular icon and resize
     circle_icon = Image.composite(img, background, mask)
-    circle_icon = circle_icon.resize(size=(int(header_width/12), int(header_width/12)))
+    circle_icon = circle_icon.resize(size=(int(header_width/11), int(header_width/11)))
     circle_icon_center = int(header_height/2) - int(circle_icon.height/2)
 
     # create ImageFont objects
@@ -33,7 +33,7 @@ def generate_header(subreddit_icon, title_img_obj, subreddit='subreddit', userna
     header_background = Image.new("RGBA", (header_width, header_height), '#111110')
     draw_text = ImageDraw.Draw(header_background)
     draw_text.text((circle_icon.width + 2*circle_icon_center, int(circle_icon_center/2) + 1), text= 'r/' + subreddit, fill='white', font=subreddit_fnt)
-    draw_text.text((circle_icon.width + 2*circle_icon_center, int(header_background.height/2) + 2), text='u/' + username, fill='grey', font=username_fnt)
+    draw_text.text((circle_icon.width + 2*circle_icon_center, int(header_background.height/2) + 4), text='u/' + username, fill='grey', font=username_fnt)
 
     # combine header and title
     dst = Image.new('RGB', (header_width, header_background.height + title_img_obj.height), '#111110')
