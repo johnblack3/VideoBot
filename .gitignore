@@ -1,1 +1,4 @@
+# ignore .txt .csv .mp4 files
 *.txt
+*.csv
+*.mp4

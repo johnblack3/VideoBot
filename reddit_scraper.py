@@ -7,20 +7,21 @@ John Black
 import requests
 import pandas as pd
 
-# Personal use script (CLIENT_ID) and secret key
-with open('sk.txt', 'r') as f: # Get secret key from file
-    sk = f.read()
-CLIENT_ID = 'D1Rl8K7DtN4CUNuFYHL3Xg'
-SECRET_KEY = sk
+# Set up userinfo.txt according to the instructions in README.md
+user_info = []
+with open('userinfo.txt', 'r') as f:
+    for line in f:
+        user_info.append(line.strip())
+
+CLIENT_ID = user_info[0]
+SECRET_KEY = user_info[1]
 
 auth = requests.auth.HTTPBasicAuth(CLIENT_ID, SECRET_KEY)
 
-with open('pw.txt', 'r') as f: # Get password from file
-    pw = f.read()
 data = {
     'grant_type': 'password',
-    'username': 'sauceyramen',
-    'password': pw
+    'username': user_info[2],
+    'password': user_info[3]
 }
 
 headers = {'User-Agent': 'PopularPostCompiler/0.0.1'}
@@ -42,7 +43,7 @@ def get_posts(subreddit='Python', count=10, listing='hot', time='day'):
     # fullname (post id): post['kind'] + '_' + post['data']['id']
     res = requests.get('https://oauth.reddit.com/r/{sub}/{lst}/?t={time}'\
                         .format(sub=subreddit, lst=listing, time=time),
-                        headers=headers, params={'limit': '10'})
+                        headers=headers, params={'limit': str(count)})
 
     # Create pandas df to store data from json (use res.json() to get data)
     df = pd.DataFrame()
