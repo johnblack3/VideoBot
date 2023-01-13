@@ -1,5 +1,6 @@
 """
-Script designed to scrape reddit posts.
+Contains script designed to scrape reddit posts, get_posts(),
+    and a helper function to retrieve subreddit icons, get_icon().
 
 John Black
 11/7/22
@@ -15,16 +16,17 @@ with open('userinfo.txt', 'r') as f:
 
 CLIENT_ID = user_info[0]
 SECRET_KEY = user_info[1]
+APP_INFO = user_info[2]
 
 auth = requests.auth.HTTPBasicAuth(CLIENT_ID, SECRET_KEY)
 
 data = {
     'grant_type': 'password',
-    'username': user_info[2],
-    'password': user_info[3]
+    'username': user_info[3],
+    'password': user_info[4]
 }
 
-headers = {'User-Agent': 'PopularPostCompiler/0.0.1'}
+headers = {'User-Agent': APP_INFO}
 res = requests.post('https://www.reddit.com/api/v1/access_token',
                      auth=auth, data=data, headers=headers)
 TOKEN = res.json()['access_token']
@@ -38,6 +40,7 @@ def get_posts(subreddit='Python', count=10, listing='hot', time='day'):
     subreddit (string): name of subreddit (default=Python)
     count (int): number of posts to retrieve (default=10)
     listing (string): type of listings, hot, new, top, etc. (default=hot)
+    time (string): time range for posts (default=day)
     """
     # Use 'after' xor 'before' param to only get posts after/before a certain post (use fullname)
     # fullname (post id): post['kind'] + '_' + post['data']['id']

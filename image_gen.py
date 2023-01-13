@@ -50,22 +50,22 @@ def generate_image(text="No Text Inputted", font_size=16, background_video=None,
             if text_draw.textlength(paragraphs[i][start_of_line:end_of_line], font=fnt) < max_image_width: # paragraphs[i][start_of_line:end_of_line]
                 previous_end_of_line = end_of_line
                 end_of_line = paragraphs[i].find(' ', end_of_line+1)
-                print("\nIF: ", paragraphs[i][start_of_line:end_of_line], " end_of_line:", end_of_line)
+                #print("\nIF: ", paragraphs[i][start_of_line:end_of_line], " end_of_line:", end_of_line)
                 if end_of_line == -1 and text_draw.textlength(paragraphs[i][start_of_line:end_of_line], font=fnt) < max_image_width: break
             else:
-                print("\nELSE: ", text_draw.textlength(paragraphs[i][start_of_line:previous_end_of_line], font=fnt))
+                #print("\nELSE: ", text_draw.textlength(paragraphs[i][start_of_line:previous_end_of_line], font=fnt))
                 paragraphs[i] = paragraphs[i][:previous_end_of_line] + '\n' + paragraphs[i][previous_end_of_line + 1:]
                 #width_check = paragraphs[i][end_of_line + 1:]
                 start_of_line = previous_end_of_line + 1
                 end_of_line = previous_end_of_line + 2
-                print('paragraphs[i] (bottom of else): ', paragraphs[i])
+                #print('paragraphs[i] (bottom of else): ', paragraphs[i])
                 previous_end_of_line = end_of_line
                 end_of_line = paragraphs[i].find(' ', end_of_line+1)
                 previous_end_of_line = end_of_line
                 end_of_line = paragraphs[i].find(' ', end_of_line+1)
 
         bound_box = text_draw.textbbox(anchor, paragraphs[i], font=fnt)
-        print(bound_box, i)
+        #print(bound_box, i)
 
         image_width = bound_box[2] + anchor[0]
         image_height = bound_box[3] + anchor[1] + 6

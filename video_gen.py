@@ -53,3 +53,5 @@ def generate_video(background_video, image_list, audio_list, background_video_st
     for i in range(len(image_list)):
         os.remove(image_list[i])
         os.remove(audio_list[i])
+        if os.path.exists('media/subreddit_icon.png'):
+            os.remove('media/subreddit_icon.png')

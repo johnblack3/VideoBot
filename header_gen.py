@@ -41,7 +41,3 @@ def generate_header(subreddit_icon, title_img_obj, subreddit='subreddit', userna
     dst.paste(circle_icon, (circle_icon_center, circle_icon_center))
     dst.paste(title_img_obj, (0, header_background.height))
     return dst
-
-if __name__ == "__main__":
-    title_img_obj = Image.new("RGBA", size=(328, 50))
-    generate_header('media\subreddit_icon.png', title_img_obj, subreddit='funny', username='username')
