@@ -1,5 +1,5 @@
-# TikTokBot
-Generates videos with text from Reddit posts (or custom text) and a voiceover.
+# VideoBot
+Generates videos with text from Reddit posts (or custom text) and a voiceover (text-to-speach).
 
 ## Setup
 Create userinfo.txt according to the following setup:
@@ -17,6 +17,8 @@ CLIENT_ID and SECRET_KEY are used for authenticating the Reddit API call. You mu
 ## Installation of Libraries
 You'll need Python 3 installed with pip. Run:
 
+`pip install datetime`
+
 `pip install moviepy.editor`
 
 `pip install os`
@@ -27,9 +29,15 @@ You'll need Python 3 installed with pip. Run:
 
 `pip install pyttsx3`
 
+`pip install random`
+
 `pip install requests`
 
 ## Usage
 Call `get_posts` in `reddit_scraper.py` to generate a pandas DataFrame (df.csv) containing reddit posts.
 
 Call `main` in `main.py` to generate an mp4 video file.
+
+Use `get_batch` in `main.py` to generate multiple mp4 video files.
+
+More features coming soon!
