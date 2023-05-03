@@ -1,7 +1,8 @@
 from moviepy.editor import ImageClip, VideoFileClip, CompositeVideoClip, AudioFileClip
 import os
+# from pydub import AudioSegment
 
-def generate_video(background_video, image_list, audio_list, background_video_start=0, final_video_name='final_video'):
+def generate_video(background_video, image_list, audio_list, background_video_start=0, final_video_name='video'):
     """
     Generates video clips with synchronized images and audio
     
@@ -16,10 +17,17 @@ def generate_video(background_video, image_list, audio_list, background_video_st
         return print('Image and audio list not same length')
 
     total_duration = 0
-    previous_clip_duration = 0
     video_and_images = []
 
     for i in range(len(image_list)):
+        # # check if audio file has length 0, which should be an error
+        # if AudioSegment.from_file(audio_list[i], format="mp3") == 0:
+        #     if os.path.exists('ERROR.txt'): file_mode = 'a'
+        #     else: file_mode = 'w'
+        #     with open("ERROR.txt", file_mode) as f:
+        #         f.write(audio_list[i])
+        #     continue
+
         # create image and audio clip objects
         image_clip = ImageClip(image_list[i]).set_position(('center', 'center'))
         audio_clip = AudioFileClip(audio_list[i])
@@ -28,9 +36,9 @@ def generate_video(background_video, image_list, audio_list, background_video_st
         image_clip = image_clip.set_audio(audio_clip)
         image_clip = image_clip.set_duration(audio_clip.duration) # change to set duration
         image_clip = image_clip.set_start(total_duration)
-        previous_clip_duration = audio_clip.duration
-        total_duration += audio_clip.duration
         video_and_images.append(image_clip)
+
+        total_duration += audio_clip.duration
 
     # create background video clip and crop to size
     background_video_clip = (VideoFileClip(background_video, audio=False)
