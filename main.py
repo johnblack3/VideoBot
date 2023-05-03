@@ -17,7 +17,7 @@ import datetime
 def main(background_video, update_df=False, subreddit=None, post_count=10,
          listing_type='top', post_time='day', df_index=0, separate_by_sentence=True,
          font_size=16, background_video_start=0, final_image_text=None,
-         generate_background_video_start=False, file_name='video'):
+         generate_background_video_start=False, file_name='video', voice_gender="male"):
     """
     Main function for generating videos
 
@@ -34,18 +34,22 @@ def main(background_video, update_df=False, subreddit=None, post_count=10,
     final_image_text (string): text to be placed in final image of video (default=None)
     generate_background_video_start (bool): create random start time when True (default=False)
     file_name (string): name of the video file to be saved (default=video)
+    voice_gender (string): voice's gender ("male" or "female")
     """
 
     # update data frame ('df.csv') with new posts
     if update_df:
         get_posts(subreddit=subreddit, count=post_count,
                   listing=listing_type, time=post_time)
-        print('df updated: subreddit {subreddit}')
+        print('df updated: subreddit:', subreddit)
 
     # generate text
     df = pd.read_csv('df.csv')
     title = df.title[df_index]
     selftext = df.selftext[df_index]
+    if type(selftext) != str:
+        print("Empty title, exiting function")
+        return
     text_to_read = title + (".\n" if separate_by_sentence else "\n") + selftext
 
     # create image at end of video with custom text
@@ -54,7 +58,8 @@ def main(background_video, update_df=False, subreddit=None, post_count=10,
 
     # check if parameter subreddit matches the data frame
     if subreddit != None and subreddit != df.subreddit[df_index]:
-        print('WARNING: Subreddit name passed to main ({subreddit})and subreddit name in df.csv ({df.subreddit[df_index]})do not match. Name in df.csv will be used.')
+        print(
+            'WARNING: Subreddit name passed to main ({})and subreddit name in df.csv ({})do not match. Name in df.csv will be used.'.format(subreddit, df.subreddit[df_index]))
     subreddit = df.subreddit[df_index]
     username = df.author[df_index]
 
@@ -96,7 +101,7 @@ def main(background_video, update_df=False, subreddit=None, post_count=10,
         #     audio = AudioSegment.from_mp3(f)
         #     audio_len = len(audio)/1000
         #     total_durration += audio_len
-        background_video_start = get_random_time(200)
+        background_video_start = get_random_time(180)
 
     # generate images
     image_list = generate_image(text=text_to_read, font_size=font_size,
@@ -138,19 +143,20 @@ def daily_batch(posts_from_each, subreddits=['TrueOffMyChest', 'confessions']):
                  file_name=video_title)
 
 
-# # call main method
-# main(background_video=r'C:\Users\johnb\Videos\4K Video Downloader/background1.mp4',
-#      update_df=False,
-#      subreddit='TrueOffMyChest',
-#      post_count=10,
-#      listing_type='top',
-#      post_time='day',
-#      df_index=2,
-#      separate_by_sentence=True,
-#      font_size=16,
-#      background_video_start=300,
-#      final_image_text="Thanks for watching, comment your thoughts and opinions below",
-#      generate_background_video_start=False,
-#      file_name='video')
+# call main method
+main(background_video=r'C:\Users\johnb\Videos\4K Video Downloader/background1.mp4',
+     update_df=False,
+     subreddit='TrueOffMyChest',
+     post_count=10,
+     listing_type='top',
+     post_time='day',
+     df_index=0,
+     separate_by_sentence=True,
+     font_size=16,
+     background_video_start=300,
+     final_image_text="Thanks for watching, comment your thoughts and opinions below",
+     generate_background_video_start=False,
+     file_name='video47',
+     voice_gender="male")
 
 daily_batch(2)
