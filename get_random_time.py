@@ -1,5 +1,6 @@
 import random
 
+
 def get_random_time(duration):
     # Read the list of bad time intervals from a file
     with open('bad_times.txt') as f:
@@ -23,7 +24,7 @@ def get_random_time(duration):
         # Check if the time falls within any of the intervals
         overlaps = False
         for interval in intervals:
-            print(interval[0], interval[1])
+            # print(interval[0], interval[1])
             if interval[0] <= start_time < interval[1] or \
                     interval[0] < end_time <= interval[1] or \
                     start_time <= interval[0] and end_time + total_duration >= interval[1]:

@@ -16,6 +16,8 @@ def generate_image(text="No Text Inputted", font_size=16, background_video=None,
     subreddit (string): name of subreddit
     username (string): name of author
     """
+    print("image_gen - Generating images")
+
     image_list = []
     fnt = ImageFont.truetype('arial.ttf', font_size)
     anchor = (10,6)
@@ -27,9 +29,11 @@ def generate_image(text="No Text Inputted", font_size=16, background_video=None,
         else: video_width = video.size[0]
         max_image_width = int(video_width * 0.75)
     else: max_image_width = 350
+
     # split text into paragraphs and remove whitespace
     paragraphs = text.split('\n')
     paragraphs = [i for i in paragraphs if i not in ['', ' ']]
+    
     # create image for each paragraph
     for i in range(len(paragraphs)):
         # create font for title
@@ -86,4 +90,5 @@ def generate_image(text="No Text Inputted", font_size=16, background_video=None,
         image.save('media\image' + str(i) + '.png')
         image_list.append('media\image' + str(i) + '.png')
 
+    print("image_gen - Done\n")
     return image_list

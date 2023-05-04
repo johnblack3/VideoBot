@@ -9,6 +9,7 @@ from image_gen import generate_image
 from video_gen import generate_video
 from reddit_scraper import get_icon, get_posts
 from get_random_time import get_random_time
+import os
 import pandas as pd
 # from pydub import AudioSegment
 import datetime
@@ -67,12 +68,17 @@ def main(background_video, update_df=False, subreddit=None, post_count=10,
     if separate_by_sentence:
         # split text into sentences
         paragraphs = text_to_read.split('.')
-        paragraphs = [i for i in paragraphs if i not in ['', ' ']]
+        paragraphs = [i for i in paragraphs if i not in [
+            '', ' ', '\'', '\"', '“', '“']]
         for i in range(len(paragraphs)):
-            if paragraphs[i][0] == ' ':
+            paragraphs[i] = paragraphs[i].strip()
+            # need to fix this to only remove strings that are just quotes
+            while paragraphs[i][0] in [' ', '\'', '\"', '“', '“']:
                 paragraphs[i] = paragraphs[i][1:]
             if i != 0 and paragraphs[i][-1] not in ['?', '!']:
                 paragraphs[i] = paragraphs[i] + '.'
+            if paragraphs[i] == '':
+                del (paragraphs[i])
         text_to_read = '\n'.join(paragraphs)
     else:
         # split text into paragraphs
@@ -92,7 +98,7 @@ def main(background_video, update_df=False, subreddit=None, post_count=10,
     subreddit_icon = get_icon(subreddit)
 
     # generate audo
-    audio_list = generate_audio(text_to_read)
+    audio_list = generate_audio(text_to_read, gender="male")
 
     # calculate random time to start video in background
     # total_durration = 0
@@ -115,7 +121,7 @@ def main(background_video, update_df=False, subreddit=None, post_count=10,
                    final_video_name=file_name)
 
 
-def daily_batch(posts_from_each, subreddits=['TrueOffMyChest', 'confessions']):
+def daily_batch(posts_from_each, subreddits):
     """
     Function for generating multiple videos (batches)
 
@@ -123,6 +129,8 @@ def daily_batch(posts_from_each, subreddits=['TrueOffMyChest', 'confessions']):
     posts_from_each (int): number of posts to generate from each subreddit
     subreddit (list): list of strings containing name of subreddits (default=)
     """
+    print("Starting daily_batch function with {} posts from:".format(posts_from_each))
+    print("\n".join(subreddits), '\n')
 
     # loop through subreddits and post count
     new_df = True
@@ -144,19 +152,20 @@ def daily_batch(posts_from_each, subreddits=['TrueOffMyChest', 'confessions']):
 
 
 # call main method
-main(background_video=r'C:\Users\johnb\Videos\4K Video Downloader/background1.mp4',
-     update_df=False,
-     subreddit='TrueOffMyChest',
-     post_count=10,
-     listing_type='top',
-     post_time='day',
-     df_index=0,
-     separate_by_sentence=True,
-     font_size=16,
-     background_video_start=300,
-     final_image_text="Thanks for watching, comment your thoughts and opinions below",
-     generate_background_video_start=False,
-     file_name='video47',
-     voice_gender="male")
+# main(background_video=r'C:\Users\johnb\Videos\4K Video Downloader/background1.mp4',
+#      update_df=False,
+#      subreddit='TrueOffMyChest',
+#      post_count=10,
+#      listing_type='top',
+#      post_time='day',
+#      df_index=0,
+#      separate_by_sentence=True,
+#      font_size=16,
+#      background_video_start=300,
+#      final_image_text="Thanks for watching, comment your thoughts and opinions below",
+#      generate_background_video_start=False,
+#      file_name='video47',
+#      voice_gender="male")
 
-daily_batch(2)
+daily_batch(3, subreddits=['tifu',
+            'offmychest', 'AmItheAsshole'])  # 'TrueOffMyChest', 'confessions',

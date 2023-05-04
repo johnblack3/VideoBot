@@ -7,3 +7,5 @@ __pycache__/
 !requirements.txt
 *.csv
 *.mp4
+
+testfunctions/

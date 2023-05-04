@@ -12,6 +12,7 @@ def generate_video(background_video, image_list, audio_list, background_video_st
     audio (list): list of audio files
     final_video_name (string): name of video to be saved (default=final_video)
     """
+    print("video_gen - Generating video")
     # catch error with creating image or audio files
     if len(image_list) != len(audio_list):
         return print('Image and audio list not same length')
@@ -20,6 +21,7 @@ def generate_video(background_video, image_list, audio_list, background_video_st
     video_and_images = []
 
     for i in range(len(image_list)):
+        print("Image and audio #", i)
         # # check if audio file has length 0, which should be an error
         # if AudioSegment.from_file(audio_list[i], format="mp3") == 0:
         #     if os.path.exists('ERROR.txt'): file_mode = 'a'
@@ -55,7 +57,7 @@ def generate_video(background_video, image_list, audio_list, background_video_st
     video = CompositeVideoClip(video_and_images).subclip(0, total_duration)
 
     # write video object to file
-    video.write_videofile('media/' + final_video_name + '.mp4')
+    video.write_videofile('video/' + final_video_name + '.mp4')
 
     # delete image and audio files
     for i in range(len(image_list)):
@@ -63,3 +65,4 @@ def generate_video(background_video, image_list, audio_list, background_video_st
         os.remove(audio_list[i])
         if os.path.exists('media/subreddit_icon.png'):
             os.remove('media/subreddit_icon.png')
+    print("video_gen - Done\n")
