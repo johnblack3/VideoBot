@@ -4,5 +4,6 @@ __pycache__/
 
 # ignore .txt .csv .mp4 files
 *.txt
+!requirements.txt
 *.csv
 *.mp4
