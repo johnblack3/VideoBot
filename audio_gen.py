@@ -18,8 +18,9 @@ def generate_audio(text, gender="male"):
     paragraphs = [i for i in paragraphs if i not in ['', ' ']]
 
     # get gender
-    gender_select = 0
-    if (gender == "female"):
+    if gender == "male":
+        gender_select = 0
+    elif gender == "female":
         gender_select = 1
     else:
         print("Invalid voice_gender value. Select \"male\" or \"female\"")
