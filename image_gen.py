@@ -87,8 +87,8 @@ def generate_image(text="No Text Inputted", font_size=16, background_video=None,
             image = generate_header(subreddit_icon, title_img_obj=image, subreddit=subreddit, username=username)
         
         # save file
-        image.save('media\image' + str(i) + '.png')
-        image_list.append('media\image' + str(i) + '.png')
+        image.save('media/image' + str(i) + '.png')
+        image_list.append('media/image' + str(i) + '.png')
 
     print("image_gen - Done\n")
     return image_list

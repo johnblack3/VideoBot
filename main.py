@@ -27,14 +27,14 @@ def main(background_video, update_df=False, subreddit=None, post_count=10,
     update_df (bool): update pandas DataFrame (df.csv) with get_posts() (default=False)
     subreddit (string): name of subreddit (default=None)
     listing_type (string): type of listings, hot, new, top, etc. (default=top)
-    post_time (string): time range for posts (default=day)
+    post_time (string): time range for Reddit posts (default=day)
     df_index (int): index of pandas DataFrame (df.csv) to use in video (default=0)
     separate_method (string): separate images by "word", "sentence", or "paragraph" (default="sentence")
     font_size (int): size of font for text in images in pixels (title font size = font_size + 2) (default=16)
     background_video_start (int): start time of background video used, in seconds (default=0)
     final_image_text (string): text to be placed in final image of video (default=None)
     generate_background_video_start (bool): create random start time when True (default=False)
-    file_name (string): name of the video file to be saved (default=video)
+    file_name (string): name of the video file to be saved, without file extension (default=video)
     voice_gender (string): voice's gender ("male" or "female")
     batch (bool): true if main function call is part of a batch (default=False)
     """
@@ -62,7 +62,7 @@ def main(background_video, update_df=False, subreddit=None, post_count=10,
     # check if parameter subreddit matches the data frame
     if subreddit != None and subreddit != df.subreddit[df_index]:
         print(
-            'WARNING: Subreddit name passed to main ({})and subreddit name in df.csv ({})do not match. Name in df.csv will be used.\n'.format(subreddit, df.subreddit[df_index]))
+            'WARNING: Subreddit name passed to main ({}) and subreddit name in df.csv ({}) do not match. Name in df.csv will be used.\n'.format(subreddit, df.subreddit[df_index]))
     subreddit = df.subreddit[df_index]
     username = df.author[df_index]
 
@@ -202,7 +202,7 @@ def daily_batch(posts_from_each, subreddits):
 #      listing_type='top',
 #      post_time='day',
 #      df_index=0,
-#      separate_by_sentence=True,
+#      separate_method="sentence",
 #      font_size=16,
 #      background_video_start=0,
 #      final_image_text="Thanks for watching, comment your thoughts and opinions below",

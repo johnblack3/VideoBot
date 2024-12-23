@@ -51,11 +51,12 @@ def get_posts(subreddit='Python', count=10, listing='hot', time='day'):
                        headers=headers, params={'limit': str(count)})
 
     # Create pandas df to store data from json (use res.json() to get data)
-    df = pd.DataFrame()
+    # df = pd.DataFrame() # removed in pandas v2.0.0
 
     # Add data to df; use post['data'].keys() to get all available keys
+    data = []
     for post in res.json()['data']['children']:
-        df = df.append({
+        data.append({
             'subreddit': post['data']['subreddit'],
             'title': post['data']['title'],
             'selftext': post['data']['selftext'],
@@ -64,7 +65,9 @@ def get_posts(subreddit='Python', count=10, listing='hot', time='day'):
             # 'downs': post['data']['downs'],
             # 'score': post['data']['score'],
             'author': post['data']['author']
-        }, ignore_index=True)
+        })
+
+    df = pd.DataFrame(data)
 
     # save data frame to file
     df.to_csv('df.csv')

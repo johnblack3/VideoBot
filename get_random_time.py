@@ -2,6 +2,12 @@ import random
 
 
 def get_random_time(duration):
+    """
+    Generates random time.
+    
+    Arguments:
+    duration ()
+    """
     # Read the list of bad time intervals from a file
     with open('bad_times.txt') as f:
         intervals = []
